@@ -1,4 +1,6 @@
-#app/config.py
+"""
+app/config.py
+"""
 from pydantic_settings import BaseSettings
 from pydantic import Field
 from typing import Dict
@@ -22,8 +24,8 @@ class Settings(BaseSettings):
 
     # Ollama
     OLLAMA_BASE_URL: str = Field("http://localhost:11434", env="OLLAMA_BASE_URL")
-    OLLAMA_MODEL: str = Field("llama3.1:8b", env="OLLAMA_MODEL")
-    OLLAMA_FALLBACK_MODEL: str = Field("mistral:7b", env="OLLAMA_FALLBACK_MODEL")
+    OLLAMA_MODEL: str = Field("qwen2.5-coder:3b", env="OLLAMA_MODEL")
+    OLLAMA_FALLBACK_MODEL: str = Field("qwen2.5:3b", env="OLLAMA_FALLBACK_MODEL")
 
     # SMTP
     SMTP_HOST: str = Field("smtp.gmail.com", env="SMTP_HOST")
@@ -36,10 +38,10 @@ class Settings(BaseSettings):
 
     # Task-specific Ollama model routing
     OLLAMA_MODELS: Dict[str, str] = {
-        "reasoning": "llama3.1:8b",
-        "json_extraction": "mistral:7b",
-        "email_drafting": "llama3.1:8b",
-        "summarization": "phi3:mini",
+        "reasoning": "qwen2.5-coder:3b",
+        "json_extraction": "qwen2.5:3b",
+        "email_drafting": "qwen2.5:3b",
+        "summarization": "qwen2.5:3b",
     }
 
     class Config:
