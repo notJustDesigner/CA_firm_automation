@@ -16,6 +16,7 @@ from app.config import settings
 from app.database import engine
 from app.api.auth import get_current_user, router as auth_router
 from app.api.system import router as system_router
+from app.api.hitl import router as hitl_router
 
 logger = logging.getLogger(__name__)
 APP_VERSION = "0.1.0"
@@ -101,6 +102,7 @@ if os.path.isdir("templates"):
 
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(system_router)
+app.include_router(hitl_router)
 
 
 # ─── Health endpoint ──────────────────────────────────────────────────────────
